@@ -4,7 +4,7 @@ class Environment {
     constructor() {
         // Setup our this.world
         world = new CANNON.World()
-        world.gravity.set(0, 0, -98.1) // m/s²
+        world.gravity.set(0, 0, -150) // m/s²
         
         this.body = document.getElementById('body')
         this.groundMaterial = new CANNON.Material("groundMaterial")
@@ -22,7 +22,8 @@ class Environment {
         this.world = world // Let world be accessed
     }
 
-    simulate(mats) {
+    simulate(mats, entities) {
+        // Add interactions (friction, restitution) between ground and the floor
         this.interactions = []
         var interaction
         for (let i = 0; i < mats.length; i++) {
@@ -37,57 +38,36 @@ class Environment {
             this.interactions.unshift(interaction)
             world.addContactMaterial(this.interactions[0]);
         }
-    }
 
-    createSphere(ID, x, y, page) {
-        self = this // Preserve 'this' or else it will refer to the window
-        if (page != undefined) {
-            $(function(){
-                $("#container").load(page);
-            });
-            $(window).on('load', function() {
-                self.createSphereLoaded(ID, x, y)
-            })
-        } else {
-            self.createSphereLoaded(ID, x, y) // self could prolly be this
-        }
-    }
-
-    createSphereLoaded(ID, x, y) {
-        var fixedTimeStep = 1.0 / 60.0 // seconds
-        var maxSubSteps = 3
-        var lastTime
-
-        var obj = document.getElementById(ID) // Grab ID
-        obj.style.position = "absolute"
-        // obj.class = "dot"
-
-        // Create a sphere
-        this.sphereMaterial = new CANNON.Material("sphereMaterial");
-        var radius = 100 // m
-        var sphereBody = new CANNON.Body({
-            mass: 5, // kg
-            position: new CANNON.Vec3(x, 0, y), // m
-            shape: new CANNON.Sphere(radius),
-            material: this.sphereMaterial, // Add specific interaction with floor
-            angularDamping: 0.5 // Slow rotation naturally (since friction alone doesn't work)
-        }); // NEED A SEMICOLON HERE
-        world.addBody(sphereBody); // AND HERE
-
+        const fixedTimeStep = 1.0 / 60.0 // seconds
+        const maxSubSteps = 3
+        var lastTime; // SEMICOLON NEEDED
+        
         // Start the simulation loop
-        (function simloop(time){
+        (function simloop(time) {
             requestAnimationFrame(simloop) // Create async thread
             if(lastTime !== undefined) {
                 var dt = (time - lastTime) / 1000
-                world.step(fixedTimeStep, dt, maxSubSteps)
+                self.world.step(fixedTimeStep, dt, maxSubSteps)
             }
-            // Change position (& text)
-            // obj.innerHTML = Math.round(sphereBody.position.z*100)/100
-            obj.style.top = window.innerHeight - sphereBody.position.z + "px"
-            obj.style.left = window.innerWidth/2 - sphereBody.position.x + "px"
-            // obj.style.angle = sphereBody.rotation.y // SOMETHING LIKE THIS
-            
-            lastTime = time
+            // Render each entity with it's one coordinates
+            for (let i in entities) {
+                // Change position
+                // console.log(entities[i])
+                // if (entities[i].ID =='1') {
+                //     console.log(entities[i].obj.style.left)
+                // }
+
+                // object.innerHTML = Math.round(self.body.position.z*100)/100
+                entities[i].obj.style.top = window.innerHeight - entities[i].body.position.z - entities[i].radius + "px"
+                entities[i].obj.style.left = window.innerWidth/2 + entities[i].body.position.x - entities[i].radius + "px"
+                // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
+
+                // console.log(entities[i].body.shapes[0]["radius"])
+                
+            }
+
+            lastTime = time // Keep track of how long since last render
         })();
     }
   }

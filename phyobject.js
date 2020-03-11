@@ -5,6 +5,7 @@ class PhyObject {
 
         switch(type) {
             case "Sphere":
+                this.radius = width;
                 this.body = new CANNON.Body({
                     mass: 5, // kg
                     position: new CANNON.Vec3(x, 0, y), // m
@@ -16,8 +17,8 @@ class PhyObject {
 
                 this.cStyle = `
                 position: absolute;
-                height: `+ width +`px;
-                width: `+ width +`px;
+                height: `+ width*2 +`px;
+                width: `+ width*2 +`px;
                 background-color: #bbb;
                 border-color: black;
                 border-radius: 50%;
@@ -25,6 +26,8 @@ class PhyObject {
                 `
                 break
             case "Case":
+                this.width = width;
+                this.height = height;
                 this.body = new CANNON.Body({
                     mass: 5,
                     position: new CANNON.Vec3(x, 0, y),
@@ -69,33 +72,34 @@ class PhyObject {
     }
 
     run() {
-        self = this
-        const fixedTimeStep = 1.0 / 60.0 // seconds
-        const maxSubSteps = 3
-        var object = this.obj;
-        var lastTime;
+        // self = this
+        // const fixedTimeStep = 1.0 / 60.0 // seconds
+        // const maxSubSteps = 3
+        // var object = this.obj;
+        // var lastTime;
 
-        console.log(self.ID);
+        // console.log(self.ID);
         
-        // Start the simulation loop
-        (function simloop(time) {
-            requestAnimationFrame(simloop) // Create async thread
-            if(lastTime !== undefined) {
-                var dt = (time - lastTime) / 1000
-                self.world.step(fixedTimeStep, dt, maxSubSteps)
-            }
-            // Change position
-            if (object != null) {
-                // object.innerHTML = Math.round(self.body.position.z*100)/100
-                if (self.ID =='1') {
-                    console.log("object")
-                    console.log(self.body.position.x)
-                }
-                object.style.top = window.innerHeight - self.body.position.z + "px"
-                object.style.left = window.innerWidth/2 - self.body.position.x + "px"
-                // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
-            }
-            lastTime = time
-        })();
+        // // Start the simulation loop
+        // (function simloop(time) {
+        //     requestAnimationFrame(simloop) // Create async thread
+        //     if(lastTime !== undefined) {
+        //         var dt = (time - lastTime) / 1000
+        //         self.world.step(fixedTimeStep, dt, maxSubSteps)
+        //     }
+        //     // Change position
+        //     if (object != null) {
+        //         // object.innerHTML = Math.round(self.body.position.z*100)/100
+        //         console.log(self)
+        //         if (self.ID =='1') {
+        //             console.log("object")
+        //             console.log(self.body.position.x)
+        //         }
+        //         object.style.top = window.innerHeight - self.body.position.z + "px"
+        //         object.style.left = window.innerWidth/2 - self.body.position.x + "px"
+        //         // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
+        //     }
+        //     lastTime = time
+        // })();
     }
 }
