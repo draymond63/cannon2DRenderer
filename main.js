@@ -16,18 +16,21 @@ sphereMaterial = new CANNON.Material("sphereMaterial");
 materials.push(sphereMaterial)
 
 // Create multiple spheres
-sphere = new PhyObject(env.world, "Sphere", 50, null, 0, 20, sphereMaterial)
+sphere = new PhyObject(env.world, "Sphere", 50, null, 0, 50, sphereMaterial)
 sphere.addHTML('sphere', '1')
 
-sphere1 = new PhyObject(env.world, "Sphere", 100, null, 10, 500, sphereMaterial)
+sphere1 = new PhyObject(env.world, "Sphere", 50, null, 0, 500, sphereMaterial)
 sphere1.addHTML('sphere', '2')
+
 
 // Pack all the entities for simulation
 let entities = [sphere, sphere1]
 // Begin rendering all the objects
 env.simulate(materials, entities)
 
-// console.log(sphere.body.shapes[0]["radius"])
-// console.log(sphere1.body.shapes[0]["radius"])
+// Add sphere2 after the fact
+sphere2 = new PhyObject(env.world, "Sphere", 50, null, 1, 300, sphereMaterial)
+sphere2.addHTML('sphere', '3')
+env.add(sphere2)
 
 console.log(document.body)

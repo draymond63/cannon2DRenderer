@@ -1,10 +1,10 @@
 class PhyObject {
     constructor(world, type, width, height, x, y, material) {
         this.mat = material
-        self = this
+        this.type = type.toLowerCase()
 
-        switch(type) {
-            case "Sphere":
+        switch(this.type) {
+            case "sphere":
                 this.radius = width;
                 this.body = new CANNON.Body({
                     mass: 5, // kg
@@ -25,7 +25,7 @@ class PhyObject {
                 display: inline-block;
                 `
                 break
-            case "Case":
+            case "case":
                 this.width = width;
                 this.height = height;
                 this.body = new CANNON.Body({
@@ -38,7 +38,7 @@ class PhyObject {
                 });
                 break
             }
-        this.world = world // XXX Save world internally?
+        // this.world = world // XXX Save world internally?
     }
 
     addHTML(type, ID) {        
@@ -60,46 +60,5 @@ class PhyObject {
         // Grab new object and add renderability
         this.obj = document.getElementById(ID)
         this.obj.style = this.cStyle
-        
-        // $(function(){
-        //     $("#container").load(page);
-        // });
-        // $(window).on('load', function() {
-        //     document.getElementById("BASE").id = ID
-        //     self.obj = document.getElementById(ID)
-        //     self.obj.style = self.cStyle
-        // })
-    }
-
-    run() {
-        // self = this
-        // const fixedTimeStep = 1.0 / 60.0 // seconds
-        // const maxSubSteps = 3
-        // var object = this.obj;
-        // var lastTime;
-
-        // console.log(self.ID);
-        
-        // // Start the simulation loop
-        // (function simloop(time) {
-        //     requestAnimationFrame(simloop) // Create async thread
-        //     if(lastTime !== undefined) {
-        //         var dt = (time - lastTime) / 1000
-        //         self.world.step(fixedTimeStep, dt, maxSubSteps)
-        //     }
-        //     // Change position
-        //     if (object != null) {
-        //         // object.innerHTML = Math.round(self.body.position.z*100)/100
-        //         console.log(self)
-        //         if (self.ID =='1') {
-        //             console.log("object")
-        //             console.log(self.body.position.x)
-        //         }
-        //         object.style.top = window.innerHeight - self.body.position.z + "px"
-        //         object.style.left = window.innerWidth/2 - self.body.position.x + "px"
-        //         // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
-        //     }
-        //     lastTime = time
-        // })();
     }
 }

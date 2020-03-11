@@ -8,6 +8,7 @@ class Environment {
         
         this.body = document.getElementById('body')
         this.groundMaterial = new CANNON.Material("groundMaterial")
+        this.entities;
         
         // Create a plane
         var groundBody = new CANNON.Body({
@@ -23,6 +24,9 @@ class Environment {
     }
 
     simulate(mats, entities) {
+        // Store entities in object & bind this
+        self = this
+        this.entities = entities;
         // Add interactions (friction, restitution) between ground and the floor
         this.interactions = []
         var interaction
@@ -41,6 +45,8 @@ class Environment {
 
         const fixedTimeStep = 1.0 / 60.0 // seconds
         const maxSubSteps = 3
+        var offsetX;
+        var offsetY;
         var lastTime; // SEMICOLON NEEDED
         
         // Start the simulation loop
@@ -48,26 +54,36 @@ class Environment {
             requestAnimationFrame(simloop) // Create async thread
             if(lastTime !== undefined) {
                 var dt = (time - lastTime) / 1000
-                self.world.step(fixedTimeStep, dt, maxSubSteps)
+                window.world.step(fixedTimeStep, dt, maxSubSteps)
             }
             // Render each entity with it's one coordinates
-            for (let i in entities) {
-                // Change position
-                // console.log(entities[i])
-                // if (entities[i].ID =='1') {
-                //     console.log(entities[i].obj.style.left)
-                // }
+            for (let i in self.entities) {
+                if (self.entities[i].type == 'sphere') {
+                    offsetX = self.entities[i].radius
+                    offsetY = self.entities[i].radius
+                } else if (self.entities[i].type == 'case') {
+                    offsetX = self.entities[i].width
+                    offsetY = self.entities[i].height
+                } else {
+                    offsetX = 0
+                    offsetY = 0
+                }
 
+                // Change position
                 // object.innerHTML = Math.round(self.body.position.z*100)/100
-                entities[i].obj.style.top = window.innerHeight - entities[i].body.position.z - entities[i].radius + "px"
-                entities[i].obj.style.left = window.innerWidth/2 + entities[i].body.position.x - entities[i].radius + "px"
+                self.entities[i].obj.style.top = window.innerHeight - self.entities[i].body.position.z - offsetY + "px"
+                self.entities[i].obj.style.left = window.innerWidth/2 + self.entities[i].body.position.x - offsetX + "px"
                 // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
 
-                // console.log(entities[i].body.shapes[0]["radius"])
+                // console.log(self.entities[i].body.shapes[0]["radius"])
                 
             }
 
             lastTime = time // Keep track of how long since last render
         })();
+    }
+
+    add(phyObj) {
+        this.entities.push(phyObj)
     }
   }
