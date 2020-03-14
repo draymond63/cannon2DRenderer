@@ -1,7 +1,18 @@
 class PhyObject {
-    constructor(world, type, width, height, x, y, material) {
+    constructor(dict) {
+        const   world = dict['world']
+        ,       type = dict['type']
+        ,       width = dict['width']
+        ,       height = dict['height']
+        ,       x = dict['x']
+        ,       y = dict['y']
+        ,       material = dict['material'];
+
         this.mat = material
         this.type = type.toLowerCase()
+        this.mouseDown = false;
+        this.grabbedX = 0;
+        this.grabbedY = 0;
 
         switch(this.type) {
             case "sphere":
@@ -37,12 +48,12 @@ class PhyObject {
                     material: this.mat,
                 });
                 break
-            }
-        // this.world = world // XXX Save world internally?
+        }
     }
 
     addHTML(type, ID) {        
         const templates = document.querySelectorAll("template")
+        let self = this
         let template;
         for (let i = 0; i<templates.length; i++) {
             if (templates[i].id == type) {
@@ -60,5 +71,26 @@ class PhyObject {
         // Grab new object and add renderability
         this.obj = document.getElementById(ID)
         this.obj.style = this.cStyle
+
+
+        // Add touch down boolean
+        this.obj.onmousedown = function() { 
+            self.mouseDown = true;
+        }
+        this.obj.onmouseup = function() {
+            self.mouseDown = false;
+        }
+        this.obj.onmouseover = function(event) {
+            if (self.mouseDown) {
+                self.grabbedX = event.clientX
+                self.grabbedY = event.clientY
+            }
+        }
+    }
+
+    reset() {
+        this.body.position.set(200, 0, 50);
+        this.body.velocity.set(0, 0, 0)
     }
 }
+

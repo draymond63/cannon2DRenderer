@@ -10,27 +10,51 @@
 // env.simulate()
 
 env = new Environment()
-var materials = []
 
+var materials = []
 sphereMaterial = new CANNON.Material("sphereMaterial");
 materials.push(sphereMaterial)
 
-// Create multiple spheres
-sphere = new PhyObject(env.world, "Sphere", 50, null, 0, 50, sphereMaterial)
-sphere.addHTML('sphere', '1')
-
-sphere1 = new PhyObject(env.world, "Sphere", 50, null, 0, 500, sphereMaterial)
-sphere1.addHTML('sphere', '2')
-
-
-// Pack all the entities for simulation
-let entities = [sphere, sphere1]
 // Begin rendering all the objects
-env.simulate(materials, entities)
+env.begin(materials)
 
-// Add sphere2 after the fact
-sphere2 = new PhyObject(env.world, "Sphere", 50, null, 1, 300, sphereMaterial)
-sphere2.addHTML('sphere', '3')
-env.add(sphere2)
+// Create multiple spheres
+sphere = new PhyObject({
+    'world': env.world, 
+    'type': "Sphere", 
+    'width': 50,
+    'x': -400, 
+    'y': 50, 
+    'material': sphereMaterial
+})
+sphere.addHTML('page1', 1)
+env.render(sphere)
+
+sphere = new PhyObject({
+    'world': env.world, 
+    'type': "Sphere", 
+    'width': 50,
+    'x': 100, 
+    'y': 1000, 
+    'material': sphereMaterial
+})
+sphere.addHTML('page2', 2)
+env.render(sphere)
+
+let counter = 3
+addObject = (num) => {
+    // Add sphere2 after the fact
+    sphere2 = new PhyObject({
+        'world': env.world, 
+        'type': "Sphere", 
+        'width': 50,
+        'x': 1, 
+        'y': 300, 
+        'material': sphereMaterial
+    })
+    sphere2.addHTML('page'+num, counter)
+    env.render(sphere2)
+    counter++
+}
 
 console.log(document.body)

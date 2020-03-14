@@ -2,10 +2,19 @@
 <!DOCTYPE html>
 
 <!-- PAGE 1 -->
-<template id="sphere">
+<template id="page1">
     <span>
         <a style="position: relative; left: 45%; top: 45%;">
             hi
+        </a>
+    </span>
+</template>
+
+<!-- PAGE 2 -->
+<template id="page2">
+    <span > <!-- onclick="MouseDown(1)" -->
+        <a style="position: relative; left: 35%; top: 45%;">
+            hello
         </a>
     </span>
 </template>
@@ -17,9 +26,6 @@
         <link rel="stylesheet" type="text/css" href="stylesheet.css"></link>
     </head>
     <body id="body">
-        <!-- <a id="item" style="position:absolute"></a>
-        <a id="item2" style="position:absolute">Hi</a> -->
-
         <!-- GROUND -->
         <svg width="100%" height="1%">
             <rect width="100%" height="100%" style="
@@ -30,6 +36,10 @@
                 stroke:rgb(0,0,0);
                 " />
         </svg>
+
+        <button onclick="addObject(1)">1</button>
+        <button onclick="addObject(2)">2</button>
+
         <!-- PHYSICS PLAYGROUND -->
         <div id="container"></div>
         
