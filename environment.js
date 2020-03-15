@@ -31,7 +31,7 @@ class Environment {
         var interaction
         for (let i = 0; i < mats.length; i++) {
             interaction = new CANNON.ContactMaterial(this.groundMaterial, mats[i], {
-                friction: 1,
+                friction: 0.5,
                 restitution: 0.3,
                 contactEquationStiffness: 1e8,
                 contactEquationRelaxation: 3,
@@ -58,29 +58,33 @@ class Environment {
             // Render each entity with it's one coordinates
             for (let i in self.entities) {
                 // Determine offset based off shape
-                if (self.entities[i].type == 'sphere') {
+                if (self.entities[i].type == 'circle') {
                     offsetX = self.entities[i].radius
                     offsetY = self.entities[i].radius
-                } else if (self.entities[i].type == 'case') {
-                    offsetX = self.entities[i].width
-                    offsetY = self.entities[i].height
+                } else if (self.entities[i].type == 'box') {
+                    offsetX = self.entities[i].width/2
+                    offsetY = self.entities[i].height/2
                 } else {
                     offsetX = 0
                     offsetY = 0
                 }
                 // Change physics coordinates if the user is touching the entity
-                if (self.entities[i].mouseDown && self.entities[i].grabbedX && self.entities[i].grabbedY) {
-                    let X = - window.innerWidth/2 + self.entities[i].grabbedX
-                    let Y = window.innerHeight - self.entities[i].grabbedY
-                    self.entities[i].body.position.x = X
-                    self.entities[i].body.position.z = Y
-                    console.log(self.entities[i].grabbedX + " " + self.entities[i].grabbedY)
-                }
+                // if (self.entities[i].mouseDown && self.entities[i].grabbedX && self.entities[i].grabbedY) {
+                //     let X = - window.innerWidth/2 + self.entities[i].grabbedX
+                //     let Y = window.innerHeight - self.entities[i].grabbedY
+                //     self.entities[i].body.position.x = X
+                //     self.entities[i].body.position.z = Y
+                //     console.log(self.entities[i].grabbedX + " " + self.entities[i].grabbedY)
+                // }
 
                 // Change position
                 self.entities[i].obj.style.top = window.innerHeight - self.entities[i].body.position.z - offsetY + "px"
                 self.entities[i].obj.style.left = window.innerWidth/2 + self.entities[i].body.position.x - offsetX + "px"
                 // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
+
+                if (self.entities[i].ID == 2) {
+                    console.log(self.entities[i].body.position.z)
+                }
 
             }
 
