@@ -1,0 +1,14 @@
+/* If the width is above a standard, use this instead */
+@media (min-width: 48em) {
+    /******************************** SIDE BAR ********************************/
+    .sideBtn {
+        font-size: 1.5vw;    
+        height: 3em;
+    }
+    .sideBar {
+        width: 10vw;
+    }
+    .sideHeader {
+        font-size: 2.8vw;
+    }
+}

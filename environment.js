@@ -81,11 +81,6 @@ class Environment {
                 self.entities[i].obj.style.top = window.innerHeight - self.entities[i].body.position.z - offsetY + "px"
                 self.entities[i].obj.style.left = window.innerWidth/2 + self.entities[i].body.position.x - offsetX + "px"
                 // obj.style.angle = this.body.rotation.y // SOMETHING LIKE THIS
-
-                if (self.entities[i].ID == 2) {
-                    console.log(self.entities[i].body.position.z)
-                }
-
             }
 
             lastTime = time // Keep track of how long since last render
@@ -94,5 +89,11 @@ class Environment {
 
     render(phyObj) {
         this.entities.push(phyObj)
+    }
+    resetWorld() {
+        env.world.gravity.set(500, 0, 100)
+        setTimeout(function() {
+            env.world.gravity.set(0, 0, -150)
+        }, 1000);
     }
   }

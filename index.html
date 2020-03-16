@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 
 <!-- PAGE 1 -->
-<template id="page1">
+<template id="projects">
     <span>
-        <a style="position: relative; left: 45%; top: 45%;">
+        <a style="position: relative; top: 45%; left: 45%;">
             hi
         </a>
     </span>
 </template>
 
 <!-- PAGE 2 -->
-<template id="page2">
+<template id="aboutMe">
     <span > <!-- onclick="MouseDown(1)" -->
-        <a style="position: relative; left: 35%; top: 45%;">
+        <a style="position: relative; top: 45%; left: 45%;">
             hello
         </a>
     </span>
@@ -23,26 +23,27 @@
     <head>
         <meta charset="utf-8">
         <title>Daniel &#9889;</title>
-        <link rel="stylesheet" type="text/css" href="stylesheet.css"></link>
+        <link href="https://fonts.googleapis.com/css?family=Kameron&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="mobile.css"></link>
+        <link rel="stylesheet" type="text/css" href="computer.css"></link>
     </head>
     <body id="body">
-        <!-- GROUND -->
-        <svg width="100%" height="1%">
-            <rect width="100%" height="100%" style="
-                position: absolute;
-                bottom: 0;
-                fill:rgb(46, 46, 46);
-                stroke-width:3;
-                stroke:rgb(0,0,0);
-                " />
-        </svg>
-
-        <button onclick="addObject(1)">1</button>
-        <button onclick="addObject(2)">2</button>
-
+        <!-- SIDE BAR -->
+        <div class="sideBar">
+            <button class="sideBtn", onclick="reset()">Reset</button>
+            <a class="sideHeader">Projects</a>
+            <button class="sideBtn", onclick="addObject(1)">Overview</button>
+            <button class="sideBtn", onclick="addObject(2)">4-Bit Computer</button>
+        </div>
+        
         <!-- PHYSICS PLAYGROUND -->
         <div id="container"></div>
-        
+
+        <!-- BOTTOM TAG -->
+        <span class="tagLine">
+            <a>dan . raymond</a>
+        </span>
+
         <!-- SCRIPTS -->
         <script src="lib/cannon.min.js"></script>
         <script src="environment.js"></script>
