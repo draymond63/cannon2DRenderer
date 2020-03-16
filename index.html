@@ -1,19 +1,33 @@
 
 <!DOCTYPE html>
 
-<!-- PAGE 1 -->
-<template id="projects">
-    <span>
+<!-- PROJECTS -->
+<template id="projects - Body">
+    <span class="case-body">
         <a style="position: relative; top: 45%; left: 45%;">
-            hi
+            This is an overview of all the projects I have done
+        </a>
+    </span>
+</template>
+<template id="projects - Hdr">
+    <span class="case-hdr">
+        <a>
+            My Projects
         </a>
     </span>
 </template>
 
-<!-- PAGE 2 -->
-<template id="aboutMe">
-    <span > <!-- onclick="MouseDown(1)" -->
+<!-- ABOUT ME -->
+<template id="aboutMe - Body">
+    <span class="case-body">
         <a style="position: relative; top: 45%; left: 45%;">
+            hello
+        </a>
+    </span>
+</template>
+<template id="aboutMe - Hdr">
+    <span class="case-hdr">
+        <a>
             hello
         </a>
     </span>
@@ -31,9 +45,10 @@
         <!-- SIDE BAR -->
         <div class="sideBar">
             <button class="sideBtn", onclick="reset()">Reset</button>
+            <button class="sideBtn", onclick="addPage('aboutMe - Body', 'aboutMe - Hdr')">About Me</button>
             <a class="sideHeader">Projects</a>
-            <button class="sideBtn", onclick="addObject(1)">Overview</button>
-            <button class="sideBtn", onclick="addObject(2)">4-Bit Computer</button>
+            <button class="sideBtn", onclick="addPage('projects - Body', 'projects - Hdr')">Overview</button>
+            <button class="sideBtn", onclick="addPage('CHUMP - Body', 'CHUMP - Hdr')">4-Bit Computer</button>
         </div>
         
         <!-- PHYSICS PLAYGROUND -->

@@ -14,6 +14,21 @@ body {
     flex-direction: row;
 }
 
+
+/******************************** CASE *************************************/
+.case-body {
+    background-image: radial-gradient(#4C5B5C, #3F4B4C);
+    border: solid #000;
+    border-width: 0 5px;
+
+    color: ivory;
+}
+.case-hdr {
+    background-image: radial-gradient(#4C5B5C, #3F4B4C);
+    font-size: 6em;
+    color: ivory;
+}
+
 /******************************** SIDE BAR ********************************/
 .sideBtn {
     background-color: #F49D37;
@@ -51,4 +66,57 @@ body {
     font-family: 'Kameron', serif;
     color: #DB5461;
     font-size: 7vw;
+}
+
+/******************************** TRANSITION ******************************/
+.fade-out {
+    animation: fadeOut ease 5s;
+    -webkit-animation: fadeOut ease 5s;
+    -moz-animation: fadeOut ease 5s;
+    -o-animation: fadeOut ease 5s;
+    -ms-animation: fadeOut ease 5s;
+}
+@keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+@-o-keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
 }

@@ -45,7 +45,7 @@ class PhyObject {
                     mass: width * height/1000,
                     position: new CANNON.Vec3(x, layer*1000, y),
                     shape: new CANNON.Box(
-                        new CANNON.Vec3(width/2, 1, height/2)
+                        new CANNON.Vec3(width/2, 100, height/2)
                     ).convexPolyhedronRepresentation,
                     material: this.mat,
                     fixedRotation: true,

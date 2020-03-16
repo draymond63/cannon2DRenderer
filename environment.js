@@ -91,9 +91,9 @@ class Environment {
         this.entities.push(phyObj)
     }
     resetWorld() {
-        env.world.gravity.set(500, 0, 100)
+        env.world.gravity.set(750, 0, 150)
         setTimeout(function() {
             env.world.gravity.set(0, 0, -150)
-        }, 1000);
+        }, 1500);
     }
   }
