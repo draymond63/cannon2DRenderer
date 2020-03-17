@@ -95,5 +95,9 @@ class Environment {
         setTimeout(function() {
             env.world.gravity.set(0, 0, -150)
         }, 1500);
+        
+        // for (i in entities) {
+        //     this.entities[i].applyImpulse(new CANNON.Vec3(50,0,0), new CANNON.Vec3(0,0,0))
+        // }
     }
   }

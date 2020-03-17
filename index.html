@@ -1,22 +1,6 @@
 
 <!DOCTYPE html>
 
-<!-- PROJECTS -->
-<template id="projects - Body">
-    <span class="case-body">
-        <a style="position: relative; top: 45%; left: 45%;">
-            This is an overview of all the projects I have done
-        </a>
-    </span>
-</template>
-<template id="projects - Hdr">
-    <span class="case-hdr">
-        <a>
-            My Projects
-        </a>
-    </span>
-</template>
-
 <!-- ABOUT ME -->
 <template id="aboutMe - Body">
     <span class="case-body">
@@ -27,9 +11,44 @@
 </template>
 <template id="aboutMe - Hdr">
     <span class="case-hdr">
-        <a>
+        <h1>
             hello
+        </h1>
+    </span>
+</template>
+
+<!-- PROJECTS -->
+<template id="projects - Body">
+    <span class="case-body">
+        <a style="position: relative; top: 45%; left: 45%;">
+            This is an overview of all the projects I have done
         </a>
+    </span>
+</template>
+<template id="projects - Hdr">
+    <span class="case-hdr">
+        <h1>
+            My Projects
+        </h1>
+    </span>
+</template>
+
+<!-- ANDRO -->
+<template id="Andro - Body">
+    <span class="case-body">
+        <a style="position: relative; top: 45%; left: 45%;">
+            This is an overview of all the projects I have done
+        </a>
+    </span>
+</template>
+<template id="Andro - Hdr">
+    <span class="case-hdr">
+        <h1 style="display: flex;">
+            Andro -
+        </h1>
+        <h2 style="display: flex;">
+            An independent application specific processor for 1 bit quantized neural networks.
+        </h2>
     </span>
 </template>
 
@@ -42,22 +61,24 @@
         <link rel="stylesheet" type="text/css" href="computer.css"></link>
     </head>
     <body id="body">
-        <!-- SIDE BAR -->
-        <div class="sideBar">
-            <button class="sideBtn", onclick="reset()">Reset</button>
-            <button class="sideBtn", onclick="addPage('aboutMe - Body', 'aboutMe - Hdr')">About Me</button>
-            <a class="sideHeader">Projects</a>
-            <button class="sideBtn", onclick="addPage('projects - Body', 'projects - Hdr')">Overview</button>
-            <button class="sideBtn", onclick="addPage('CHUMP - Body', 'CHUMP - Hdr')">4-Bit Computer</button>
-        </div>
-        
-        <!-- PHYSICS PLAYGROUND -->
-        <div id="container"></div>
 
         <!-- BOTTOM TAG -->
         <span class="tagLine">
             <a>dan . raymond</a>
         </span>
+
+        <!-- PHYSICS PLAYGROUND -->
+        <div id="container"></div>
+
+        <!-- SIDE BAR -->
+        <div class="sideBar">
+            <button class="sideBtn", onclick="reset()">Reset</button>
+            <button class="sideBtn", onclick="addDefaultPage('aboutMe - Body', 'aboutMe - Hdr')">About Me</button>
+            <a class="sideHeader">Projects</a>
+            <button class="sideBtn", onclick="addDefaultPage('projects - Body', 'projects - Hdr')">Overview</button>
+            <button class="sideBtn", onclick="addCHUMP()">4-Bit Computer</button>
+            <button class="sideBtn", onclick="addDefaultPage('Andro - Body', 'Andro - Hdr')">BNN Computer</button>
+        </div>
 
         <!-- SCRIPTS -->
         <script src="lib/cannon.min.js"></script>

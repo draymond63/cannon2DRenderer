@@ -1,6 +1,9 @@
+// Initialize the enviroment (physics playground)
 env = new Environment()
 let counter = 0
+let prevBody, prevHdr = undefined;
 
+// Add material interaction to world
 var materials = []
 genMat = new CANNON.Material("genMat");
 materials.push(genMat)
@@ -8,23 +11,11 @@ materials.push(genMat)
 // Begin rendering all the objects
 env.begin(materials)
 
-// object = new PhyObject({
-//     'world': env.world, 
-//     'type': "Circle", 
-//     'radius': 50,
-//     'x': -50, 
-//     'y': 800, 
-//     'layer': 0,
-//     'material': genMat
-// })
-// object.addHTML('projects', 1)
-// env.render(object)
-let prevBody, prevHdr = undefined;
-
-addPage = (bodyHTML, hdrHTML) => {
-    const bodyWidth = 0.89
+// Add functionality to the add page buttons
+addDefaultPage = (bodyHTML, hdrHTML) => {
     const bodyHeight = 0.85
 
+    // Fade previous page
     if (prevBody && prevHdr) { // Doesn't fully work (only gets rid of the first one?)
         console.log(prevBody)
         prevBody.obj.classList.add('fade-out')
@@ -34,9 +25,9 @@ addPage = (bodyHTML, hdrHTML) => {
     body = new PhyObject({
         'world': env.world, 
         'type': "Box", 
-        'width': window.innerWidth * bodyWidth,
+        'width': window.innerWidth,
         'height': window.innerHeight * bodyHeight,
-        'x': window.innerWidth * (1 - bodyWidth)/2, 
+        'x': 0, 
         'y': window.innerHeight * (1 + bodyHeight/2) + 1, 
         'layer': counter,
         'material': genMat
