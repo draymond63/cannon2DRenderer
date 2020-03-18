@@ -1,5 +1,17 @@
 /* If the width is above a standard, use this instead */
 @media (min-width: 48em) {
+    /******************************** DEFAULTS ***************************/
+    h1 {
+        font-size: 6em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    embed {
+        width: 50%;
+    }
+
+
     /******************************** SIDE BAR ********************************/
     .sideBtn {
         font-size: 1.5vw;    
@@ -10,5 +22,17 @@
     }
     .sideHeader {
         font-size: 2.8vw;
+    }
+    
+
+    /******************************** CASE *************************************/
+    .case-body {
+        justify-content: flex-end; /* Move things away from the sidebar */
+    }
+    .restrict {
+        width: 88%; /* Make room for the sidbar */
+    }
+    .aboutMeText {
+        width: 25%;
     }
 }

@@ -17,16 +17,23 @@ h1 {
     padding-left: 1vw;
     padding-right: 0.5em;
     /* margin-top: 0; */
-    font-size: 6em;
+    font-size: 4em;
     color: #000;
 }
 h2 {
-    font-size: 2em;
+    font-size: 1em;
     color: #000;
 }
 button:focus { 
     outline-color: #D47D17;
     background-image: linear-gradient(#F49D37, #D47D17);
+}
+embed {
+    width: 100%;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    padding-bottom: 3vh;
+    padding-top: 1vh;
 }
 
 
@@ -40,6 +47,7 @@ button:focus {
 
     display: flex !important;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .case-hdr {
     display: flex !important;
@@ -50,6 +58,18 @@ button:focus {
     border-top: 1px solid #000 !important;
     border-left: 1px solid #000 !important;
     border-right: 1px solid #000 !important;
+}
+
+
+/******************************** PAGE SPECIFIC ***************************/
+.restrict {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+}
+.aboutMeText {
+    width: 100%;
 }
 
 
@@ -93,7 +113,6 @@ button:focus {
     color: #DB5461;
     font-size: 7vw;
 }
-
 
 /******************************** TRANSITION ******************************/
 .fade-out {

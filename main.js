@@ -16,7 +16,7 @@ addDefaultPage = (bodyHTML, hdrHTML) => {
     const bodyHeight = 0.85
 
     // Fade previous page
-    if (prevBody && prevHdr) { // Doesn't fully work (only gets rid of the first one?)
+    if (prevBody && prevHdr) {
         console.log(prevBody)
         prevBody.obj.classList.add('fade-out')
         prevHdr.obj.classList.add('fade-out')
