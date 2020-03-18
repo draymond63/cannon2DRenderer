@@ -20,6 +20,7 @@ addDefaultPage = (bodyHTML, hdrHTML) => {
         console.log(prevBody)
         prevBody.obj.classList.add('fade-out')
         prevHdr.obj.classList.add('fade-out')
+        delete prevBody, prevHdr
     }
     // Add body object to fall onto the screen
     body = new PhyObject({
@@ -35,7 +36,7 @@ addDefaultPage = (bodyHTML, hdrHTML) => {
     body.addHTML(bodyHTML, counter)
     env.render(body)
     counter++
-    // Add header object ot fall onto the screen
+    // Add header object to fall onto the screen
     header = new PhyObject({
         'world': env.world, 
         'type': "Box", 

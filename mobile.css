@@ -66,10 +66,14 @@ embed {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    margin-top: 1vh;
     width: 100%;
 }
 .aboutMeText {
     width: 100%;
+}
+.defImg {
+    border: 2px solid #000;
 }
 
 
