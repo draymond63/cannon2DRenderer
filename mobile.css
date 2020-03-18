@@ -15,33 +15,43 @@ body {
 }
 h1 {
     padding-left: 1vw;
-    margin-top: 0;
+    padding-right: 0.5em;
+    /* margin-top: 0; */
     font-size: 6em;
-    color: ivory;
+    color: #000;
 }
 h2 {
     font-size: 2em;
-    color: ivory;
+    color: #000;
 }
 button:focus { 
-    outline-color: #F49D37;
+    outline-color: #D47D17;
     background-image: linear-gradient(#F49D37, #D47D17);
 }
 
 
 /******************************** CASE *************************************/
 .case-body {
-    background-image: linear-gradient(#F49D37, #DB5461);
-    border: solid #000;
-    border-width: 0 5px;
+    background-image: linear-gradient(#FFFFD0, #FFFF99); /* #FFFFD0, #FFFF99 | #F49D37, #DB5461*/
 
-    color: ivory;
+    border-bottom: 1px solid #000 !important;
+    border-left: 1px solid #000 !important;
+    border-right: 1px solid #000 !important;
+
+    display: flex !important;
+    flex-direction: row;
 }
 .case-hdr {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
-    background-image: linear-gradient(#DB5461, #F49D37);
+    align-items: center;
+    
+    background-image: linear-gradient(#FFFFDD, #FFFFD0); /* #FFFFDD, #FFFFD0 | #DB5461, #F49D37*/
+    border-top: 1px solid #000 !important;
+    border-left: 1px solid #000 !important;
+    border-right: 1px solid #000 !important;
 }
+
 
 /******************************** SIDE BAR ********************************/
 .sideBtn {
@@ -70,6 +80,7 @@ button:focus {
     margin-bottom: 0.75em;
 }
 
+
 /******************************** OVERLAY *********************************/
 .tagLine {
     display: flex;
@@ -83,13 +94,14 @@ button:focus {
     font-size: 7vw;
 }
 
+
 /******************************** TRANSITION ******************************/
 .fade-out {
-    animation: fadeOut ease 3s forwards;
-    -webkit-animation: fadeOut ease 3s forwards;
-    -moz-animation: fadeOut ease 3s forwards;
-    -o-animation: fadeOut ease 3s forwards;
-    -ms-animation: fadeOut ease 3s forwards;
+    animation:          fadeOut ease 3s forwards;
+    -webkit-animation:  fadeOut ease 3s forwards;
+    -moz-animation:     fadeOut ease 3s forwards;
+    -o-animation:       fadeOut ease 3s forwards;
+    -ms-animation:      fadeOut ease 3s forwards;
 }
 @keyframes fadeOut {
     0% {
